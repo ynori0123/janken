@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<title>JavaScriptサンプル</title>
+</head>
+<body>
+
+
+<script>
+document.write("<img src=\""+Math.floor(3*Math.random())+".png\">");
+</script>
+
+
+
+
+
+
+<script>
+function janken(myhand) {
+	var hand = ["ぐー","ちょき","ぱー"]; // 手の配列
+	var aihand = Math.floor(3*Math.random()); // CPUが出す手を決める
+	var result = ""; // 変数の初期化
+	if( myhand == 0 ) { // 自分がぐーのとき
+		if( aihand == 0 ) { // 相手もぐーなら
+			result = "ひきわけ";
+		} else if( aihand == 1 ) { // 相手がぐーでなくてちょきなら
+			result = "かち";
+		} else { // それら以外、つまり相手がぱーなら
+			result = "まけ";
+		}
+	}	
+	else if( myhand == 1 ) { // 自分がちょきのとき
+		if( aihand == 1) { // 相手もちょきなら
+			result = "ひきわけ";
+		} else if( aihand == 2 ) { // 相手がちょきでなくてぱーなら
+			result = "かち";
+		} else { // それら以外、つまり相手がぐーなら
+			result = "まけ";
+		}
+	} 
+	else { // 自分がぱーのとき
+		if( aihand == 2) { // 相手もぱーなら
+			result = "ひきわけ";
+		} else if( aihand == 0 ) { // 相手がぱーでなくてぐーなら
+			result = "かち";
+		} else { // それら以外、つまり相手がちょきなら
+			result = "まけ";
+		}
+	} 
+	
+
+	// 結果表示
+	alert("自分の手："+hand[myhand]+"\n相手の手："+hand[aihand]+"\n結果："+result);
+}
+</script>
+
+<form>
+<input type="button" value="ぐー" onclick="janken(0)">
+<input type="button" value="ちょき" onclick="janken(1)">
+<input type="button" value="ぱー" onclick="janken(2)">
+</form>
+
+
+
+</body>
+</html>
